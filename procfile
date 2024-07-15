@@ -1,1 +1,1 @@
-web: python amazonbase1.py
+web: gunicorn app:app
