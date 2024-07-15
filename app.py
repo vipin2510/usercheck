@@ -12,6 +12,10 @@ logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 
+# Set environment variables directly in the script
+os.environ['GOOGLE_CHROME_BIN'] = '/usr/bin/google-chrome'
+os.environ['CHROMEDRIVER_PATH'] = '/usr/local/bin/chromedriver'
+
 def check_user_existence(phone_number):
     logger.info(f"Checking user existence for phone number: {phone_number}")
     chrome_options = Options()
@@ -75,5 +79,5 @@ def home():
 
 if __name__ == '__main__':
     logger.info("Starting Flask application")
-    port = int(os.environ.get('PORT', 5000))
+    port = int(os.environ.get('PORT', 5001))
     app.run(host='0.0.0.0', port=port)
