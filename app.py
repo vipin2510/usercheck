@@ -19,7 +19,7 @@ os.environ['CHROMEDRIVER_PATH'] = '/usr/local/bin/chromedriver'
 def check_user_existence(phone_number):
     logger.info(f"Checking user existence for phone number: {phone_number}")
     chrome_options = Options()
-    chrome_options.add_argument("--headless")
+    #chrome_options.add_argument("--headless")
     chrome_options.add_argument("--disable-gpu")
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
@@ -32,7 +32,7 @@ def check_user_existence(phone_number):
         driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options)
         logger.info("WebDriver initialized successfully")
         
-        driver.get("https://www.amazon.in/ap/signin")
+        driver.get("https://www.amazon.in/ap/signin?openid.pape.max_auth_age=0&openid.return_to=https%3A%2F%2Fwww.amazon.in%2F%3Fref_%3Dnav_signin&openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.assoc_handle=inflex&openid.mode=checkid_setup&openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0")
         logger.info("Navigated to Amazon sign-in page")
         
         input_field = WebDriverWait(driver, 10).until(
